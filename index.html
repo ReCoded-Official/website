@@ -24,7 +24,10 @@
 a{color:#241018}a:hover{color:#2F48BE}
 @keyframes rc-ticker{from{transform:translateY(0)}to{transform:translateY(-50%)}}
 .rc-ticker{animation:rc-ticker 24s linear infinite}
+.rc-logos-funders{animation:rc-marquee 110s linear infinite}
+.rc-logos-hirers{animation:rc-marquee 60s linear infinite}
 .rc-logos-funders:hover,.rc-logos-hirers:hover{animation-play-state:paused}
+@media (prefers-reduced-motion: reduce){.rc-marquee,.rc-ticker,.rc-logos-funders,.rc-logos-hirers{animation:none}}
 .hero-photo{background:linear-gradient(180deg, rgba(36,16,24,0) 35%, rgba(36,16,24,0.55) 65%, rgba(30,14,22,0.92) 100%), #241018 url(./assets/img/ee313a49a75e8f1a8820368ddd4bfeab.jpg) 50% 25%/cover no-repeat}
 .bg-gradient{background:#F3F0E8 url(./assets/img/77c9cae920f4fc857086f3812b0136a8.jpg) 70% 85%/cover no-repeat}
 </style>
