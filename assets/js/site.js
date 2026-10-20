@@ -46,6 +46,41 @@
     });
   }
 
+  // ---- Statements that fill in as you scroll --------------------------------
+  // Grey words darken one by one while the paragraph moves up the screen.
+  $$('[data-fill]').forEach(function (p) {
+    if (reduceMotion) return;
+    var words = [];
+    $$('span', p).forEach(function (span) {
+      var parts = span.textContent.split(/(\s+)/);
+      span.textContent = '';
+      parts.forEach(function (t) {
+        if (!t) return;
+        if (/^\s+$/.test(t)) { span.appendChild(document.createTextNode(t)); return; }
+        var w = document.createElement('span');
+        w.textContent = t;
+        w.style.transition = 'color 0.35s ease';
+        w.style.color = '#C9C3CD';
+        span.appendChild(w); words.push(w);
+      });
+    });
+    if (!words.length) return;
+    var ticking = false;
+    var update = function () {
+      ticking = false;
+      var r = p.getBoundingClientRect(), vh = window.innerHeight;
+      // 0 when the top of the paragraph reaches 85% down the screen, 1 when its bottom reaches 45%
+      var start = vh * 0.85, end = vh * 0.45;
+      var progress = Math.min(1, Math.max(0, (start - r.top) / (start - end + r.height)));
+      var n = Math.round(progress * words.length);
+      words.forEach(function (w, i) { w.style.color = i < n ? '#1C1428' : '#C9C3CD'; });
+    };
+    var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  });
+
   // ---- FAQs (one open at a time) -------------------------------------------
   var faqButtons = $$('[data-action="q.toggle"]');
   function setFaq(btn, open) {
