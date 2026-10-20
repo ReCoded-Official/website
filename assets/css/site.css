@@ -1,0 +1,35 @@
+/* Re:Coded — shared styles. Page layout lives inline in each page's HTML. */
+
+@font-face { font-family: 'Sentient'; font-weight: 300; font-style: normal; font-display: swap; src: url(../fonts/sentient-light.woff2) format('woff2'); }
+@font-face { font-family: 'Sentient'; font-weight: 300; font-style: italic; font-display: swap; src: url(../fonts/sentient-light-italic.woff2) format('woff2'); }
+@font-face { font-family: 'Google Sans Flex'; font-weight: 300 600; font-style: normal; font-display: swap; src: url(../fonts/google-sans-flex.woff2) format('woff2'); }
+@font-face { font-family: 'Fragment Mono'; font-weight: 400; font-style: normal; font-display: swap; src: url(../fonts/fragment-mono.woff2) format('woff2'); }
+
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: #F7F6F5; }
+a { color: #1C1428; }
+a:hover { color: #2F48BE; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid #2F48BE;
+  outline-offset: 3px;
+}
+button:disabled { cursor: default !important; }
+
+/* State switching (forms, FAQs, tabs) */
+.rc-off, [hidden] { display: none !important; }
+
+/* Logo marquee */
+@keyframes rc-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.rc-marquee { animation: rc-marquee 40s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .rc-marquee { animation: none; } }
+
+/* Form feedback */
+.rc-form-error { margin: 0; padding: 14px 18px; border-radius: 12px; background: #F6E3E1; color: #5A1E2A; font-size: 16px; line-height: 1.5; }
+
+/* Cookie banner (only shown when analytics are switched on in site.js) */
+.rc-cookie { position: fixed !important; z-index: 1000; zoom: 0.8; font-family: 'Google Sans Flex', system-ui, sans-serif; color: #1C1428; }
+
+/* Small screens: pull full-bleed article images back inside the column */
+@media (max-width: 900px) {
+  figure[style*="-120px"] { margin-left: 0 !important; margin-right: 0 !important; }
+}

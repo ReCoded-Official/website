@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://re-coded.com/sitemap.xml

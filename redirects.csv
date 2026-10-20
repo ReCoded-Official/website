@@ -1,0 +1,26 @@
+old_path,new_path,status,note
+/about-us,/about,301,Page renamed
+/software-engineering,/programs/source-code,301,Old program page → SOURCE CODE
+/resilient-futures-fellowship,/programs/resilient-futures-fellowship,301,Program page moved under /programs
+/media-kit,/contact#press,301,Press kit is now a section on Contact
+/us-financials,/impact#financials,301,US Financials now on the Impact page
+/privacy-policy,/policies#privacy,301,Policies combined into one page
+/terms-of-use,/policies#terms,301,Policies combined into one page
+/cookies-policy,/policies#cookies,301,Policies combined into one page
+/search-results,/blog,301,Search removed
+/open-study-hub-category/*,/blog,301,Open Study Hub retired
+/blog/join-bootcamp-tips,/blog,301,Archived: bootcamp marketing
+/blog/bootcamp-applications,/blog,301,Archived: bootcamp marketing
+/blog/importance-of-capstone-projects,/blog,301,Archived: bootcamp marketing
+/blog/teaching-methodology,/blog,301,Archived: bootcamp marketing
+/blog/careers-services-success-story,/blog,301,Archived: bootcamp marketing
+/blog/ahmad-s-success-story,/blog,301,Archived: bootcamp marketing
+/blog/jana-success-story,/blog,301,Archived: bootcamp marketing
+/blog/tarkan-success-story,/blog,301,Archived: bootcamp marketing
+/blog/karzan-success-story,/blog,301,Archived: bootcamp marketing
+/blog/alumni-employment,/blog,301,Archived: bootcamp marketing
+/blog/re-coded-fellows-are-a-hot-commidity,/blog,301,Archived
+/blog/mentor-brandon,/blog,301,Archived
+/blog/covid-gender-equality,/blog,301,Archived: dated (2021)
+/blog/uk-ukraine-tech-bridge-partners-with-re-coded-to-empower-ukrainian-tech-talent,/blog/uk-ukraine-partnership,301,Duplicate post merged
+/blog/sarah-success-story,/blog,301,Duplicate post merged
