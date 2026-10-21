@@ -109,13 +109,23 @@
       var err = $('.rc-form-error', form);
       if (err) err.remove();
       if (btn) { btn.disabled = true; btn.dataset.label = btn.dataset.label || btn.innerHTML; btn.textContent = 'Sending…'; }
-      fetch(FORM_ENDPOINT, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) })
-        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || String(j.success) === 'false') throw new Error(j.message || 'Send failed'); }); })
+      // FormSubmit's documented AJAX format: a JSON body
+      var data = {};
+      new FormData(form).forEach(function (v, k) { data[k] = v; });
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || String(j.success) === 'false') throw new Error(j.message || ('HTTP ' + r.status)); }); })
         .then(function () { form.reset(); onDone(); })
-        .catch(function () {
+        .catch(function (e) {
+          if (window.console) console.error('Form not sent:', e && e.message);
           var p = document.createElement('p');
           p.className = 'rc-form-error'; p.setAttribute('role', 'alert');
-          p.innerHTML = 'Sorry, your message didn’t send. Please try again, or email us at <a href="mailto:ali@re-coded.com">ali@re-coded.com</a>.';
+          p.innerHTML = 'Sorry, your message didn\u2019t send. Please try again, or email us at <a href="mailto:ali@re-coded.com">ali@re-coded.com</a>.';
+          if (e && e.message) {
+            var d = document.createElement('span');
+            d.style.cssText = 'display:block;margin-top:6px;font-size:13px;opacity:.75';
+            d.textContent = 'Details: ' + e.message;
+            p.appendChild(d);
+          }
           (btn ? btn.parentNode : form).insertBefore(p, btn || null);
         })
         .then(function () { if (btn) { btn.disabled = false; btn.innerHTML = btn.dataset.label; } });
