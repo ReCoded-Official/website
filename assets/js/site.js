@@ -23,6 +23,27 @@
     btn.style.borderColor = on ? '#1C1428' : '#CFC9D4';
   }
 
+  // ---- Mobile menu ----------------------------------------------------------
+  var header = $('.rc-site-header');
+  if (header) {
+    var menuBtn = document.createElement('button');
+    menuBtn.type = 'button';
+    menuBtn.className = 'rc-menu-btn';
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Open menu');
+    menuBtn.innerHTML = '<span class="rc-menu-icon" aria-hidden="true"><i></i><i></i><i></i></span><span class="rc-menu-label">Menu</span>';
+    header.insertBefore(menuBtn, header.children[1] || null);
+    var setMenu = function (open) {
+      header.classList.toggle('rc-nav-open', open);
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      $('.rc-menu-label', menuBtn).textContent = open ? 'Close' : 'Menu';
+    };
+    menuBtn.addEventListener('click', function () { setMenu(!header.classList.contains('rc-nav-open')); });
+    $$('a', header).forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  }
+
   // ---- Count-up numbers -----------------------------------------------------
   var counters = $$('[data-count]');
   if (counters.length && 'IntersectionObserver' in window && !reduceMotion) {
