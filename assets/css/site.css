@@ -74,3 +74,12 @@ button:disabled { cursor: default !important; }
 @media (max-width: 760px) {
   footer nav { flex: 1 1 40% !important; }
 }
+
+/* Small screens: compact "Applications open" card in the homepage hero */
+@media (max-width: 760px) {
+  aside[aria-label="Applications open"] { flex: 1 1 100% !important; padding: 20px !important; gap: 18px !important; }
+  aside[aria-label="Applications open"] > div { gap: 16px !important; align-items: flex-start !important; }
+  aside[aria-label="Applications open"] img { width: 72px !important; height: 72px !important; }
+  aside[aria-label="Applications open"] span { font-size: 12px !important; letter-spacing: 1.5px !important; }
+  aside[aria-label="Applications open"] p { font-size: 18px !important; line-height: 1.35 !important; }
+}
