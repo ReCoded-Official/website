@@ -24,3 +24,8 @@ old_path,new_path,status,note
 /blog/covid-gender-equality,/blog,301,Archived: dated (2021)
 /blog/uk-ukraine-tech-bridge-partners-with-re-coded-to-empower-ukrainian-tech-talent,/blog/uk-ukraine-partnership,301,Duplicate post merged
 /blog/sarah-success-story,/blog,301,Duplicate post merged
+/log-in,/#courses,301,Old learner login → free courses on the homepage
+/learn,/#courses,301,Old learning page → free courses on the homepage
+/start-learning,/#courses,301,Old sign-up page → free courses on the homepage
+/open-study-hub,/blog,301,Open Study Hub retired
+/open-study-hub/*,/blog,301,Open Study Hub retired
