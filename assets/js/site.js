@@ -179,7 +179,7 @@
     });
   }
 
-  if (page === 'Fellowship') {
+  if (page === 'Fellowship' || page === 'SourceCode') {
     var nf = $('form[data-submit="notify"]');
     if (nf) wireForm(nf, function () { show($('[data-if="notNotified"]'), false); show($('[data-if="notified"]'), true); });
   }
